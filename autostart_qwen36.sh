@@ -18,7 +18,7 @@ START_SCRIPT="/workspace/start_qwen36_q6.sh"
 LOG_FILE="/workspace/qwen36-q6-server.log"
 
 PORT="11434"
-CTX_SIZE="16384"
+CTX_SIZE="32768"
 
 echo
 echo "Step 1/7: installing base packages..."

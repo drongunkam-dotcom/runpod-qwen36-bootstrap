@@ -66,7 +66,7 @@ if ! command -v nvcc >/dev/null 2>&1; then
 fi
 
 echo "Checking required commands..."
-for cmd in git cmake g++ python3 pip jq tmux huggingface-cli curl; do
+for cmd in git cmake g++ python3 pip jq tmux hf curl; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "ERROR: required command not found: $cmd"
     exit 1
@@ -112,7 +112,7 @@ if [ ! -f "$MODEL_FILE" ]; then
   echo "Downloading model:"
   echo "$MODEL_REPO / $MODEL_NAME"
 
-  huggingface-cli download "$MODEL_REPO" \
+  hf download "$MODEL_REPO" \
     "$MODEL_NAME" \
     --local-dir "$MODEL_DIR"
 fi
@@ -124,7 +124,7 @@ if [ ! -d "$LLAMA_DIR/.git" ]; then
   echo "llama.cpp not found. Cloning..."
   rm -rf "$LLAMA_DIR"
   cd /workspace
-  git clone --depth 1 https://github.com/ggml-org/llama.cpp.git
+  git clone --depth 1 https://github.com/ggml-org/llama.cpp.git "$LLAMA_DIR"
 else
   echo "llama.cpp exists."
 fi
